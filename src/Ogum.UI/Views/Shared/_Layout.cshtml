@@ -1,0 +1,17 @@
+﻿@{
+    Bundles.Reference("Public/css");
+    Bundles.Reference("Public/js/lib");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @Bundles.RenderStylesheets()
+</head>
+
+<body>
+    @RenderBody()
+    @Bundles.RenderScripts()
+</body>
+</html>
