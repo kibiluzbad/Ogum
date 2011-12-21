@@ -95,6 +95,9 @@
     <Reference Include="Ninject.Web.Mvc">
       <HintPath>..\packages\Ninject.MVC3.2.2.2.0\lib\net40-Full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="NinjectAdapter">
+      <HintPath>..\packages\CommonServiceLocator.NinjectAdapter.1.0.0.0\lib\NinjectAdapter.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <Private>True</Private>
@@ -146,6 +149,12 @@
     <Compile Include="App_Start\NinjectMVC3.cs" />
     <Compile Include="App_Start\Routes.cs" />
     <Compile Include="CassetteConfiguration.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Domain\Task.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Infra\Automapper\Profiles\TaskToTaskViewModelProfile.cs" />
+    <Compile Include="Infra\Automapper\Profiles\TaskViewModelToTaskProfile.cs" />
+    <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -154,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Public\css\site.css" />
     <Content Include="Public\js\lib\backbone.js" />
     <Content Include="Public\js\lib\jquery-1.7.1.js" />
     <Content Include="Public\js\lib\bundle.txt" />
@@ -172,14 +182,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Domain\" />
-    <Folder Include="Infra\Automapper\Profiles\" />
-    <Folder Include="Models\" />
-    <Folder Include="Public\css\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Infra\Queries\" />
     <Folder Include="Public\images\" />
-    <Folder Include="Public\js\app\collections\" />
-    <Folder Include="Public\js\app\models\" />
     <Folder Include="Public\js\app\routers\" />
     <Folder Include="Public\js\app\views\" />
   </ItemGroup>
@@ -187,7 +192,12 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Public\js\app\collections\tasks.coffee">
+      <LastGenOutput>tasks.js</LastGenOutput>
+    </None>
     <None Include="Public\js\app\main.coffee" />
+    <None Include="Public\js\app\models\task.coffee" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

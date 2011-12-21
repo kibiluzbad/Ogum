@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Xango.Mvc.Extensions;
 
 namespace Ogum.UI.App_Start
 {
@@ -13,11 +14,8 @@ namespace Ogum.UI.App_Start
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+            routes.Root();
+            routes.Resource("tasks","api");
         }
     }
 }
