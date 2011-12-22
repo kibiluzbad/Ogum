@@ -1,17 +1,21 @@
 ﻿@{
-    Bundles.Reference("Public/css");
-    Bundles.Reference("Public/js/lib");
+  Bundles.Reference("Public/css");
+  Bundles.Reference("Public/js/lib");
 }
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
-    @Bundles.RenderStylesheets()
+  <meta charset="utf-8" />
+  <title>@ViewBag.Title</title>
+  @Bundles.RenderStylesheets()
 </head>
-
 <body>
+  <div id="main" data-yield="main">
+    <div id="error-message">
+      <strong>ERROR:</strong> <span></span><a href="">Refresh</a></div>
     @RenderBody()
-    @Bundles.RenderScripts()
+  </div>  
+  @Bundles.RenderHtmlTemplates()
+  @Bundles.RenderScripts()
 </body>
 </html>

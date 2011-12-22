@@ -152,6 +152,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Domain\Task.cs" />
     <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Infra\Automapper\Profiles\NewTaskViewModelToTaskProfile.cs" />
     <Compile Include="Infra\Automapper\Profiles\TaskToTaskViewModelProfile.cs" />
     <Compile Include="Infra\Automapper\Profiles\TaskViewModelToTaskProfile.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
@@ -169,6 +170,10 @@
     <Content Include="Public\js\lib\bundle.txt" />
     <Content Include="Public\js\lib\underscore.js" />
     <Content Include="Public\js\lib\modernizr-2.0.6-development-only.js" />
+    <Content Include="Public\templates\newTaskViewTemplate.html" />
+    <Content Include="Public\templates\tasksViewTemplate.html" />
+    <Content Include="Public\js\lib\jQuery.tmpl.js" />
+    <Content Include="Public\templates\taskViewTemplate.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -186,7 +191,6 @@
     <Folder Include="Infra\Queries\" />
     <Folder Include="Public\images\" />
     <Folder Include="Public\js\app\routers\" />
-    <Folder Include="Public\js\app\views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -198,6 +202,10 @@
     <None Include="Public\js\app\main.coffee" />
     <None Include="Public\js\app\models\task.coffee" />
     <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Public\js\app\views\appView.coffee" />
+    <None Include="Public\js\app\views\newTaskView.coffee" />
+    <None Include="Public\js\app\views\tasksView.coffee" />
+    <None Include="Public\js\app\views\taskView.coffee" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

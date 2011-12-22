@@ -38,9 +38,9 @@ namespace Ogum.UI.Controllers
 
         [HttpPost]
         [NeedsPersistence]
-        public ActionResult Create(TaskViewModel viewModel)
+        public ActionResult Create(NewTaskViewModel viewModel)
         {
-            var task = Mapper.Map<TaskViewModel, Task>(viewModel);
+          var task = Mapper.Map<NewTaskViewModel, Task>(viewModel);
             _repository.Add(task);
 
             return Json(Mapper.Map<Task, TaskViewModel>(task));

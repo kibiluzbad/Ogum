@@ -9,4 +9,9 @@ namespace Ogum.UI.ViewModels
         public string Tag { get; set; }
         public DateTime CreateAt { get; set; }
     }
+
+  public class NewTaskViewModel
+  {
+    public string Name { get; set; }
+  }
 }

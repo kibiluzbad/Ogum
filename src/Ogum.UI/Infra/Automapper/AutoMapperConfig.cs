@@ -13,6 +13,7 @@ namespace Ogum.UI.Infra.Automapper
         {
             Mapper.AddProfile<TaskToTaskViewModelProfile>();            
             Mapper.AddProfile<TaskViewModelToTaskProfile>();            
+            Mapper.AddProfile<NewTaskViewModelToTaskProfile>();            
         }
     }
 }
