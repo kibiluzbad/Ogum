@@ -14,8 +14,6 @@
       ($ @el).html html
       @
     removeTask: ->
-      if confirm("Deseja realmente fazer isso?")
-        if @model.destroy()
-          app.Tasks.fetch()
+      @model.destroy()
 
   @app.TaskView = TaskView

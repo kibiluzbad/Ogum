@@ -8,7 +8,7 @@
     
     events:
       'keypress #task-text' : 'saveOnEnter'
-      'focusout #task-text' : 'hideWarning'
+      'focusout #task-text' : 'hideWarning'      
     render: ->
       ($ @el).html @template.tmpl()
       @
@@ -28,4 +28,6 @@
       console.log error
       $('#warning').fadeOut(100)
       $('#warning').fadeIn(400)
+    teste: ->
+      alert("Teste")
   @app.NewTaskView = NewTaskView

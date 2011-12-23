@@ -10,7 +10,6 @@ jQuery ->
         new app.NewTaskView collection: @collection
         ]
       @collection.bind 'reset', @render, @
-      @collection.bind 'add', @render, @      
     render: ->
       $(@el).empty()
       $(@el).append subview.render().el for subview in @subviews
