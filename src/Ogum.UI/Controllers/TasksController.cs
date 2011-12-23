@@ -15,59 +15,60 @@ using Xango.Mvc.Controller;
 
 namespace Ogum.UI.Controllers
 {
-    public class TasksController : Controller
+  public class TasksController : Controller
+  {
+    private readonly IRepository<Task> _repository;
+    private readonly ISessionFactory _sessionFactory;
+
+    public TasksController(IRepository<Task> repository, ISessionFactory sessionFactory)
     {
-        private readonly IRepository<Task> _repository;
-        private readonly ISessionFactory _sessionFactory;
-
-        public TasksController(IRepository<Task> repository, ISessionFactory sessionFactory)
-        {
-            _repository = repository;
-            _sessionFactory = sessionFactory;
-        }
-
-        [HttpGet]
-        [NeedsPersistence]
-        public ActionResult Index()
-        {
-            var tasks = _repository.ToList();
-
-            return Json(Mapper.Map<IEnumerable<Task>, IEnumerable<TaskViewModel>>(tasks),
-                        JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        [NeedsPersistence]
-        public ActionResult Create(NewTaskViewModel viewModel)
-        {
-          var task = Mapper.Map<NewTaskViewModel, Task>(viewModel);
-            _repository.Add(task);
-
-            return Json(Mapper.Map<Task, TaskViewModel>(task));
-        }
-
-        [HttpPut]
-        [NeedsPersistence]
-        public ActionResult Update(long id, TaskViewModel viewModel)
-        {
-            var task = Mapper.Map<TaskViewModel, Task>(viewModel);
-            _sessionFactory.GetCurrentSession().Update(task);
-
-            return Json(Mapper.Map<Task, TaskViewModel>(task));
-        }
-
-        [HttpDelete]
-        [NeedsPersistence]
-        public ActionResult Delete(long id)
-        {
-            var query = _repository.CreateQuery<IGetEntityById<Task>>();
-            query.Id = id;
-
-            var task = query.Execute();
-
-            _repository.Remove(task);
-
-            return Json(Mapper.Map<Task, TaskViewModel>(task));
-        }
+      _repository = repository;
+      _sessionFactory = sessionFactory;
     }
+
+    [HttpGet]
+    [NeedsPersistence]
+    public ActionResult Index(int year, int month, int day)
+    {
+      var date = new DateTime(year, month, day);
+      var tasks = _repository.Where(c=>c.CreatedAt.Date == date).ToList();
+
+      return Json(Mapper.Map<IEnumerable<Task>, IEnumerable<TaskViewModel>>(tasks),
+                  JsonRequestBehavior.AllowGet);
+    }
+
+    [HttpPost]
+    [NeedsPersistence]
+    public ActionResult Create(NewTaskViewModel viewModel)
+    {
+      var task = Mapper.Map<NewTaskViewModel, Task>(viewModel);
+      _repository.Add(task);
+
+      return Json(Mapper.Map<Task, TaskViewModel>(task));
+    }
+
+    [HttpPut]
+    [NeedsPersistence]
+    public ActionResult Update(long id, TaskViewModel viewModel)
+    {
+      var task = Mapper.Map<TaskViewModel, Task>(viewModel);
+      _sessionFactory.GetCurrentSession().Update(task);
+
+      return Json(Mapper.Map<Task, TaskViewModel>(task));
+    }
+
+    [HttpDelete]
+    [NeedsPersistence]
+    public ActionResult Delete(long id)
+    {
+      var query = _repository.CreateQuery<IGetEntityById<Task>>();
+      query.Id = id;
+
+      var task = query.Execute();
+
+      _repository.Remove(task);
+
+      return Json(Mapper.Map<Task, TaskViewModel>(task));
+    }
+  }
 }

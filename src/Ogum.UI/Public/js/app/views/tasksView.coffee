@@ -11,12 +11,22 @@
       @collection.bind 'destroy', @render, @
     render: ->
       ($ @el).empty()
-      for task in @collection.models
+      
+      #Completed tasks
+      for task in @collection.completedTasks()
+        completedTaskView = new app.CompletedTaskView model: task, collection: @collection
+        ($ @el).append completedTaskView.render().el
+
+      #Incomplete tasks
+      for task in @collection.incompleteTasks()
         taskView = new app.TaskView model: task, collection: @collection
         ($ @el).append taskView.render().el
+      
+      #Undo item
       if @collection.undoItem()
         undoView = new app.UndoView collection: @collection
         ($ @el).append undoView.render().el
+
       @
 
   @app.TasksView = TasksView

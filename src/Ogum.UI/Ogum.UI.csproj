@@ -152,9 +152,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Domain\Task.cs" />
     <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Domain\TaskStatus.cs" />
     <Compile Include="Infra\Automapper\Profiles\NewTaskViewModelToTaskProfile.cs" />
     <Compile Include="Infra\Automapper\Profiles\TaskToTaskViewModelProfile.cs" />
     <Compile Include="Infra\Automapper\Profiles\TaskViewModelToTaskProfile.cs" />
+    <None Include="Public\js\app\routers\ogumRouter.coffee" />
+    <None Include="Public\js\app\views\completedTaskView.coffee" />
     <None Include="Public\js\app\views\undoView.coffee" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -171,6 +174,7 @@
     <Content Include="Public\js\lib\bundle.txt" />
     <Content Include="Public\js\lib\underscore.js" />
     <Content Include="Public\js\lib\modernizr-2.0.6-development-only.js" />
+    <Content Include="Public\templates\completedTaskViewTemplate.html" />
     <Content Include="Public\templates\newTaskViewTemplate.html" />
     <Content Include="Public\templates\tasksViewTemplate.html" />
     <Content Include="Public\js\lib\jQuery.tmpl.js" />
@@ -192,7 +196,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Infra\Queries\" />
     <Folder Include="Public\images\" />
-    <Folder Include="Public\js\app\routers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

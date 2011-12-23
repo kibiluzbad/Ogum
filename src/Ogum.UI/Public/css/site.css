@@ -275,6 +275,10 @@ li {
   font-style: italic;
   text-decoration: line-through;
   color: #bbbbbb; }
+  
+.task.done{
+    text-decoration: line-through;
+}
 
 .message-blank {
   font-family: "Helvetica Neue";

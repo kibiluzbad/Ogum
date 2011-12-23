@@ -1,25 +1,23 @@
 ﻿jQuery -> 
   @app = window.app ? {}
 
-  class TaskView extends Backbone.View
-    template: $('#taskViewTemplate')
+  class CompletedTaskView extends Backbone.View
+    template: $('#completedTaskViewTemplate')
     tagName: 'li'
-    className: 'task'
+    className: 'task done'
     events:
-      "click .destroy":"removeTask"
-      "click .is-done":"markAsCompleted"
+      "click .is-done":"markAsIncomplete"
     initialize: (options) ->    
       
     render: ->
       html = @template.tmpl @model.toJSON()
       ($ @el).html html
       @
-    removeTask: ->
-      @model.destroy()
-    markAsCompleted: ->
+
+    markAsIncomplete: ->
       if @$('.is-done').prop('checked')
         @model.complete()
       else
         @model.incomplete()
       @model.save()
-  @app.TaskView = TaskView
+  @app.CompletedTaskView = CompletedTaskView
