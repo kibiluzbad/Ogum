@@ -20,8 +20,6 @@ namespace Ogum.UI.App_Start
             Routes.RegisterRoutes(RouteTable.Routes);
 
             Filters.RegisterGlobalFilters(GlobalFilters.Filters);
-
-            AutoMapperConfig.Configure();
         }
 
         public static void Stop()
