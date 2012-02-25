@@ -4,26 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using NHibernate;
+using Microsoft.Practices.ServiceLocation;
 using Ogum.UI.Domain;
 using Ogum.UI.ViewModels;
-using Xango.Data;
-using Xango.Data.NHibernate.Filters;
-using Xango.Data.NHibernate.Queries;
-using Xango.Data.Query;
-using Xango.Mvc.Controller;
+using Raven.Client;
 
 namespace Ogum.UI.Controllers
 {
   public class TasksController : Controller
   {
-    private readonly IRepository<Task> _repository;
-    private readonly ISessionFactory _sessionFactory;
+    private readonly IDocumentSession _session;
 
-    public TasksController(IRepository<Task> repository, ISessionFactory sessionFactory)
+    public TasksController(IDocumentSession session)
     {
-      _repository = repository;
-      _sessionFactory = sessionFactory;
+      _session = session;
     }
 
     [HttpGet]
@@ -31,7 +25,8 @@ namespace Ogum.UI.Controllers
     public ActionResult Index(int year, int month, int day)
     {
       var date = new DateTime(year, month, day);
-      var tasks = _repository.Where(c=>c.CreatedAt.Date == date).ToList();
+
+      var tasks = _session.Query<Task>().Where(c => c.CreatedAt.Date == date);
 
       return Json(Mapper.Map<IEnumerable<Task>, IEnumerable<TaskViewModel>>(tasks),
                   JsonRequestBehavior.AllowGet);
@@ -42,7 +37,7 @@ namespace Ogum.UI.Controllers
     public ActionResult Create(NewTaskViewModel viewModel)
     {
       var task = Mapper.Map<NewTaskViewModel, Task>(viewModel);
-      _repository.Add(task);
+      _session.Store(task);
 
       return Json(Mapper.Map<Task, TaskViewModel>(task));
     }
@@ -52,8 +47,7 @@ namespace Ogum.UI.Controllers
     public ActionResult Update(long id, TaskViewModel viewModel)
     {
       var task = Mapper.Map<TaskViewModel, Task>(viewModel);
-      _sessionFactory.GetCurrentSession().Update(task);
-
+      
       return Json(Mapper.Map<Task, TaskViewModel>(task));
     }
 
@@ -61,14 +55,35 @@ namespace Ogum.UI.Controllers
     [NeedsPersistence]
     public ActionResult Delete(long id)
     {
-      var query = _repository.CreateQuery<IGetEntityById<Task>>();
-      query.Id = id;
+      var task = _session.Load<Task>(id);
 
-      var task = query.Execute();
-
-      _repository.Remove(task);
+      _session.Delete(task);
 
       return Json(Mapper.Map<Task, TaskViewModel>(task));
+    }
+  }
+
+  [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
+  public class NeedsPersistenceAttribute : ActionFilterAttribute
+  {
+    public override void OnActionExecuting(
+            ActionExecutingContext filterContext)
+    {
+      
+    }
+
+    public override void OnActionExecuted(
+        ActionExecutedContext filterContext)
+    {
+      var session = ServiceLocator.Current.GetInstance<IDocumentSession>();
+
+      using (session)
+      {
+        if (null != session && null == filterContext.Exception)
+        {
+          session.SaveChanges();
+        }
+      }
     }
   }
 }

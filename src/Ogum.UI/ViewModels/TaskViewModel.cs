@@ -1,11 +1,11 @@
 using System;
 using Ogum.UI.Domain;
-using Xango.Mvc.ViewModel;
 
 namespace Ogum.UI.ViewModels
 {
-  public class TaskViewModel : ViewModelBase
+  public class TaskViewModel
   {
+    public long Id { get; set; }
     public string Name { get; set; }
     public string Tag { get; set; }
     public TaskStatus Status { get; set; }

@@ -15,8 +15,6 @@ namespace Ogum.UI.App_Start
     {
         public static void Start()
         {
-            Xango.Data.NHibernate.Configuration.NHFluentConfiguration.Init();
-
             Routes.RegisterRoutes(RouteTable.Routes);
 
             Filters.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -5,24 +5,22 @@ using AutoMapper;
 using Microsoft.Practices.ServiceLocation;
 using Ogum.UI.Domain;
 using Ogum.UI.ViewModels;
-using Xango.Data;
+using Raven.Client;
 
 namespace Ogum.UI.Infra.Automapper.Profiles
 {
     public class TaskViewModelToTaskProfile : Profile
     {
-      private readonly IRepository<Task> _repository;
+      private IDocumentSession _session;
 
       public TaskViewModelToTaskProfile()
       {
-        _repository = ServiceLocator.Current.GetInstance<IRepository<Task>>();
+         _session = ServiceLocator.Current.GetInstance<IDocumentSession>();
       }
 
       protected override void Configure()
       {
-        CreateMap<TaskViewModel, Task>()
-          .ConstructUsing(c => _repository
-                                 .FirstOrDefault(d => d.Id == c.Id))
+        CreateMap<TaskViewModel, Task>().ConstructUsing(c=> _session.Load<Task>(c.Id))
           .ForMember(c => c.CreatedAt, c => c.Ignore())
           .ForMember(c => c.CreatedBy, c => c.Ignore())
           .ForMember(c => c.ChangedAt, c => c.MapFrom(d => DateTime.Now))
