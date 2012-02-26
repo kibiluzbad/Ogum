@@ -1,6 +1,6 @@
 desc 'Start ravendb'
 task 'start-raven' do
-	exec %{src/packages/RavenDB.1.0.616/server/Raven.Server.exe}
+	exec %{src/packages/RavenDB.1.0.658-Unstable/server/Raven.Server.exe}
 end
 
 desc 'Start web server'
