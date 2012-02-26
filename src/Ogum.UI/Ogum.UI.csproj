@@ -89,6 +89,12 @@
     <Reference Include="Raven.Client.MvcIntegration">
       <HintPath>..\packages\RavenDB.1.0.616\lib\net40\Raven.Client.MvcIntegration.dll</HintPath>
     </Reference>
+    <Reference Include="SharpBrake.Mvc">
+      <HintPath>..\packages\SharpBrake.Mvc.1.1.3.0\lib\net40\SharpBrake.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpBrake.Mvc3">
+      <HintPath>..\packages\SharpBrake.Mvc3.1.1.1.0\lib\net40\SharpBrake.Mvc3.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
@@ -122,6 +128,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AirbrakeActivator.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\Container.cs" />
     <Compile Include="App_Start\ContainerBindings.cs" />
