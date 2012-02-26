@@ -21,7 +21,7 @@ namespace Ogum.UI.App_Start
         Bind<IServiceLocator>().ToConstant(locator).InSingletonScope();
         Bind<IDocumentStore>().ToConstant(new DocumentStore
                                             {
-                                              ConnectionStringName = "default"
+                                              ConnectionStringName = "RavenDB"
                                             }.Initialize())
           .InSingletonScope();
         Bind<IDocumentSession>()

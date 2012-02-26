@@ -40,7 +40,9 @@
     <Reference Include="AsyncCtpLibrary">
       <HintPath>..\packages\RavenDB.1.0.616\lib\net40\AsyncCtpLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper, Version=2.0.0.232, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
+    <Reference Include="AutoMapper, Version=2.0.0.232, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.2.0.0\lib\net40-client\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Cassette">
       <HintPath>..\packages\Cassette.0.9.6.1\lib\net40-Client\Cassette.dll</HintPath>
     </Reference>
@@ -125,9 +127,11 @@
     <Compile Include="App_Start\ContainerBindings.cs" />
     <Compile Include="App_Start\Filters.cs" />
     <Compile Include="App_Start\NinjectMVC3.cs" />
+    <Compile Include="Infra\Extensions\RouteExtensions.cs" />
     <Compile Include="App_Start\Routes.cs" />
     <Compile Include="CassetteConfiguration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Infra\Filters\NeedsPersistenceAttribute.cs" />
     <Compile Include="Domain\Task.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Domain\TaskStatus.cs" />

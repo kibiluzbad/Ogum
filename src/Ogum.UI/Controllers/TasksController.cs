@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using Microsoft.Practices.ServiceLocation;
 using Ogum.UI.Domain;
+using Ogum.UI.Infra.Filters;
 using Ogum.UI.ViewModels;
 using Raven.Client;
 
@@ -60,30 +60,6 @@ namespace Ogum.UI.Controllers
       _session.Delete(task);
 
       return Json(Mapper.Map<Task, TaskViewModel>(task));
-    }
-  }
-
-  [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
-  public class NeedsPersistenceAttribute : ActionFilterAttribute
-  {
-    public override void OnActionExecuting(
-            ActionExecutingContext filterContext)
-    {
-      
-    }
-
-    public override void OnActionExecuted(
-        ActionExecutedContext filterContext)
-    {
-      var session = ServiceLocator.Current.GetInstance<IDocumentSession>();
-
-      using (session)
-      {
-        if (null != session && null == filterContext.Exception)
-        {
-          session.SaveChanges();
-        }
-      }
     }
   }
 }
