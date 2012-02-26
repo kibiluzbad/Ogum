@@ -13,3 +13,4 @@ _ReSharper.*
 Ankh.NoLoad
 *.sqlite3
 *.log
+src/packages/RavenDB.1.0.616/server/Data
