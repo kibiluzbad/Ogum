@@ -14,7 +14,8 @@ namespace Ogum.UI
     {
         public void Configure(BundleCollection bundles, CassetteSettings settings)
         {
-            bundles.AddPerSubDirectory<HtmlTemplateBundle>("Public/templates", new FileSearch
+          settings.IsDebuggingEnabled = true;  
+          bundles.AddPerSubDirectory<HtmlTemplateBundle>("Public/templates", new FileSearch
                                                                            {
                                                                                Pattern = "*.html",
                                                                                SearchOption =
