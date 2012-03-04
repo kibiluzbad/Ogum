@@ -25,7 +25,7 @@ namespace Ogum.UI.App_Start
                                             }.Initialize())
           .InSingletonScope();
         Bind<IDocumentSession>()
-          .ToConstant(ServiceLocator.Current.GetInstance<IDocumentStore>().OpenSession())
+          .ToMethod(ctx => ServiceLocator.Current.GetInstance<IDocumentStore>().OpenSession())
           .InRequestScope();
       }
     }

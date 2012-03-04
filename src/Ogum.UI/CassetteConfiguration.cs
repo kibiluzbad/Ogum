@@ -14,21 +14,21 @@ namespace Ogum.UI
     {
         public void Configure(BundleCollection bundles, CassetteSettings settings)
         {
-            bundles.AddPerSubDirectory<HtmlTemplateBundle>("templates", new FileSearch
+            bundles.AddPerSubDirectory<HtmlTemplateBundle>("Public/templates", new FileSearch
                                                                            {
                                                                                Pattern = "*.html",
                                                                                SearchOption =
                                                                                    SearchOption.AllDirectories
                                                                            });
 
-            bundles.AddPerSubDirectory<StylesheetBundle>("css", new FileSearch
+            bundles.AddPerSubDirectory<StylesheetBundle>("Public/css", new FileSearch
                                                                            {
                                                                                Pattern = "*.css",
                                                                                SearchOption =
                                                                                    SearchOption.AllDirectories
                                                                            });
 
-            bundles.AddPerSubDirectory<ScriptBundle>("js", new FileSearch
+            bundles.AddPerSubDirectory<ScriptBundle>("Public/js", new FileSearch
                                                                       {
                                                                           Pattern = "*.js;*.coffee",
                                                                           SearchOption = SearchOption.AllDirectories,
