@@ -26,7 +26,7 @@
       if @collection.undoItem()
         undoView = new app.UndoView collection: @collection
         ($ @el).append undoView.render().el
-
+      @delegateEvents()
       @
 
   @app.TasksView = TasksView

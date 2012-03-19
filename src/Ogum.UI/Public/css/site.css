@@ -355,3 +355,9 @@ li {
     border-bottom: 1px dotted white; }
     #error-message a:hover, #error-message a:visited:hover {
       border-bottom: 1px solid white; }
+#loader {
+    background: url(/public/images/ajax-loader.gif);
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;    
+}

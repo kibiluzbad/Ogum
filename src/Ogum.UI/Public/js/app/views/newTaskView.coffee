@@ -10,7 +10,11 @@
       'keypress #task-text' : 'saveOnEnter'
       'focusout #task-text' : 'hideWarning'      
     render: ->
-      ($ @el).html @template.tmpl()
+      if @collection.isToday()
+        ($ @el).html @template.tmpl()
+        @delegateEvents()
+      else
+        $(@el).empty()      
       @
     saveOnEnter: (event) ->
       if (event.keyCode is 13) #ENTER
@@ -27,7 +31,5 @@
     flashWarning: (model, error) ->
       console.log error
       $('#warning').fadeOut(100)
-      $('#warning').fadeIn(400)
-    teste: ->
-      alert("Teste")
+      $('#warning').fadeIn(400)    
   @app.NewTaskView = NewTaskView

@@ -44,5 +44,12 @@ class Tasks extends Backbone.Collection
     date = new Date()
     date.setDate(@currentDate().getDate() + 1)
     @setDate date
+  isToday: ->
+    #Returns true if today is the date being tracked by this Collection.
+    date = @currentDate()
+    today = new Date()
+    date.getFullYear() == today.getFullYear() and
+      date.getMonth() == today.getMonth() and
+      date.getDate() == today.getDate()
 @app = window.app ? {}
 @app.Tasks = new Tasks

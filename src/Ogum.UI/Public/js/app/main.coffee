@@ -15,4 +15,8 @@
 
 jQuery ->
   app.router = new app.OgumRouter()
-  Backbone.history.start({pushState:true})  
+  Backbone.history.start({pushState:true})
+  ($ document).ajaxStart ->
+    ($ "#loader").show()
+  ($ document).ajaxComplete ->
+    ($ "#loader").hide()
