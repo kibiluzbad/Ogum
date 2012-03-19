@@ -158,6 +158,8 @@
     <Compile Include="Infra\Automapper\Profiles\TaskViewModelToTaskProfile.cs" />
     <None Include="Public\js\app\routers\ogumRouter.coffee" />
     <None Include="Public\js\app\views\completedTaskView.coffee" />
+    <None Include="Public\js\app\views\dateTitleView.coffee" />
+    <None Include="Public\js\app\views\menuView.coffee" />
     <None Include="Public\js\app\views\undoView.coffee" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -169,12 +171,20 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Public\css\site.css" />
+    <Content Include="Public\js\app\collections\tasks.js">
+      <DependentUpon>tasks.coffee</DependentUpon>
+    </Content>
+    <Content Include="Public\js\app\views\menuView.js">
+      <DependentUpon>menuView.coffee</DependentUpon>
+    </Content>
     <Content Include="Public\js\lib\backbone.js" />
     <Content Include="Public\js\lib\jquery-1.7.1.js" />
     <Content Include="Public\js\lib\bundle.txt" />
     <Content Include="Public\js\lib\underscore.js" />
     <Content Include="Public\js\lib\modernizr-2.0.6-development-only.js" />
     <Content Include="Public\templates\completedTaskViewTemplate.html" />
+    <Content Include="Public\templates\dateTitleTemplate.html" />
+    <Content Include="Public\templates\menuTemplate.html" />
     <Content Include="Public\templates\newTaskViewTemplate.html" />
     <Content Include="Public\templates\tasksViewTemplate.html" />
     <Content Include="Public\js\lib\jQuery.tmpl.js" />

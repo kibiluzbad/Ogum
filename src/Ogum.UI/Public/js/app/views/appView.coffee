@@ -6,6 +6,8 @@ jQuery ->
     el: '#wrap'
     initialize: (options) ->
       @subviews = [
+        new app.MenuView collection: @collection
+        new app.DateTitleView collection: @collection
         new app.TasksView collection: @collection
         new app.NewTaskView collection: @collection
         ]

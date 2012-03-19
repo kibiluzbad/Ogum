@@ -6,6 +6,8 @@
 # @reference views/completedTaskView.coffee
 # @reference views/taskView.coffee
 # @reference views/tasksView.coffee
+# @reference views/dateTitleView.coffee
+# @reference views/menuView.coffee
 # @reference views/appView.coffee
 # @reference routers/ogumRouter.coffee
 
@@ -13,6 +15,4 @@
 
 jQuery ->
   app.router = new app.OgumRouter()
-  Backbone.history.start({pushState:true})
-  #appView = new app.AppView collection: app.Tasks
-  #app.Tasks.fetch()
+  Backbone.history.start({pushState:true})  

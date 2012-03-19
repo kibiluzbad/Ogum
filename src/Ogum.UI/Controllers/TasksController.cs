@@ -47,6 +47,7 @@ namespace Ogum.UI.Controllers
     public ActionResult Update(long id, TaskViewModel viewModel)
     {
       var task = Mapper.Map<TaskViewModel, Task>(viewModel);
+      _session.SaveChanges();
       
       return Json(Mapper.Map<Task, TaskViewModel>(task));
     }

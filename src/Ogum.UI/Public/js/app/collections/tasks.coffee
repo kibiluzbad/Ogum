@@ -19,8 +19,13 @@ class Tasks extends Backbone.Collection
   undoItem: ->
     @undoAttributes
   setDate: (year, month, day) ->
+    # Call with a year, a 1-indexed month, and day of month. Or just a Date object.
+    if month is undefined and day is undefined
+      date = year
+      [year, month, day] = [date.getFullYear(), date.getMonth()+1, date.getDate()]
     [@year, @month, @day] = [year, month, day]
-    @url = "/api/tasks/#{year}/#{month}/#{day}" 
+    @url = "/api/tasks/#{year}/#{month}/#{day}"
+    @resetUndo()
     @fetch()
     @trigger 'change:date'
   currentDate: ->
@@ -31,5 +36,13 @@ class Tasks extends Backbone.Collection
   incompleteTasks: ->
     @reject (task) ->
       task.isCompleted()
+  goToPreviousDate: ->
+    date = new Date()
+    date.setDate(@currentDate().getDate() - 1)
+    @setDate date
+  goToNextDate: ->
+    date = new Date()
+    date.setDate(@currentDate().getDate() + 1)
+    @setDate date
 @app = window.app ? {}
 @app.Tasks = new Tasks
