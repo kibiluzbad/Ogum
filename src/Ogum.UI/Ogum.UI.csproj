@@ -172,6 +172,9 @@
     <Content Include="Global.asax" />
     <Content Include="Public\css\site.css" />
     <Content Include="Public\images\ajax-loader.gif" />
+    <Content Include="Public\js\app\views\newTaskView.js">
+      <DependentUpon>newTaskView.coffee</DependentUpon>
+    </Content>
     <Content Include="Public\js\lib\backbone.js" />
     <Content Include="Public\js\lib\jquery-1.7.1.js" />
     <Content Include="Public\js\lib\bundle.txt" />
