@@ -7,6 +7,7 @@ using AutoMapper;
 using Ogum.UI.Domain;
 using Ogum.UI.Infra.Filters;
 using Ogum.UI.ViewModels;
+using Raven.Abstractions;
 using Raven.Client;
 
 namespace Ogum.UI.Controllers
@@ -29,17 +30,23 @@ namespace Ogum.UI.Controllers
         var tasks = _session
             .Query<Task>()
             .Where(c => c.CreatedAt.Date == date)
-            .ToList()
-            .Union(_session
-                       .Query<Task>()
-                       .Where(
-                           c =>
-                           c.Status == TaskStatus.Incomplete
-                           && c.CreatedAt.Date < date)
-                       .ToList())
-            .OrderBy(c => c.CreatedAt);
+            .ToList();
 
-        return Json(Mapper.Map<IEnumerable<Task>, IEnumerable<TaskViewModel>>(tasks),
+        var agora = SystemTime.Now;
+
+        if (date.Day == agora.Day &&
+            date.Month == agora.Month &&
+            date.Year == agora.Year)
+            tasks = tasks.Union(_session
+                                    .Query<Task>()
+                                    .Where(
+                                        c =>
+                                        c.Status == TaskStatus.Incomplete
+                                        && c.CreatedAt.Date < date)
+                                    .ToList())
+                .ToList();
+
+        return Json(Mapper.Map<IEnumerable<Task>, IEnumerable<TaskViewModel>>(tasks.OrderBy(c => c.CreatedAt)),
                     JsonRequestBehavior.AllowGet);
     }
 
