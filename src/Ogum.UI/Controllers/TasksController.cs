@@ -24,15 +24,26 @@ namespace Ogum.UI.Controllers
     [NeedsPersistence]
     public ActionResult Index(int year, int month, int day)
     {
-      var date = new DateTime(year, month, day);
+        var date = new DateTime(year, month, day);
 
-      var tasks = _session.Query<Task>().Where(c => c.CreatedAt.Date == date);
+        var tasks = _session
+            .Query<Task>()
+            .Where(c => c.CreatedAt.Date == date)
+            .ToList()
+            .Union(_session
+                       .Query<Task>()
+                       .Where(
+                           c =>
+                           c.Status == TaskStatus.Incomplete
+                           && c.CreatedAt.Date < date)
+                       .ToList())
+            .OrderBy(c => c.CreatedAt);
 
-      return Json(Mapper.Map<IEnumerable<Task>, IEnumerable<TaskViewModel>>(tasks),
-                  JsonRequestBehavior.AllowGet);
+        return Json(Mapper.Map<IEnumerable<Task>, IEnumerable<TaskViewModel>>(tasks),
+                    JsonRequestBehavior.AllowGet);
     }
 
-    [HttpPost]
+      [HttpPost]
     [NeedsPersistence]
     public ActionResult Create(NewTaskViewModel viewModel)
     {
