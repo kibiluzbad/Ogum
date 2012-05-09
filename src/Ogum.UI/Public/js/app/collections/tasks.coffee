@@ -23,9 +23,13 @@ class Tasks extends Backbone.Collection
     # Call with a year, a 1-indexed month, and day of month. Or just a Date object.
     if month is undefined and day is undefined
       date = year
-      [year, month, day] = [date.getFullYear(), date.getMonth()+1, date.getDate()]
+      [year, month, day] = [date.getFullYear(), date.getMonth(), date.getDate()]
     [@year, @month, @day] = [year, month, day]
+    
     @url = "/api/tasks/#{year}/#{month}/#{day}"
+    
+    Backbone.history.navigate @url, false
+    
     @resetUndo()
     @fetch()
     @trigger 'change:date'
@@ -37,12 +41,12 @@ class Tasks extends Backbone.Collection
   incompleteTasks: ->
     @reject (task) ->
       task.isCompleted()
-  getToPreviousDate: ->
+  goToPreviousDate: ->
     date = @currentDate().addDays(-1);
-    date
-  getToNextDate: ->
+    @setDate(date)
+  goToNextDate: ->
     date = @currentDate().addDays(1);
-    date
+    @setDate(date)
   isToday: ->
     #Returns true if today is the date being tracked by this Collection.
     date = @currentDate()

@@ -156,17 +156,36 @@
     <Compile Include="Infra\Automapper\Profiles\NewTaskViewModelToTaskProfile.cs" />
     <Compile Include="Infra\Automapper\Profiles\TaskToTaskViewModelProfile.cs" />
     <Compile Include="Infra\Automapper\Profiles\TaskViewModelToTaskProfile.cs" />
-    <Content Include="Public\js\app\collections\tasks.js">
-      <DependentUpon>tasks.coffee</DependentUpon>
+    <Content Include="Public\js\app\routers\ogumRouter.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
     </Content>
-    <Content Include="Public\js\app\routers\ogumRouter.coffee" />
-    <Content Include="Public\js\app\routers\ogumRouter.js">
-      <DependentUpon>ogumRouter.coffee</DependentUpon>
+    <Content Include="Public\js\app\views\completedTaskView.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
     </Content>
-    <Content Include="Public\js\app\views\completedTaskView.coffee" />
-    <Content Include="Public\js\app\views\dateTitleView.coffee" />
-    <Content Include="Public\js\app\views\menuView.coffee" />
-    <Content Include="Public\js\app\views\undoView.coffee" />
+    <Content Include="Public\js\app\views\dateTitleView.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Public\js\app\views\menuView.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Public\js\app\views\undoView.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,14 +233,48 @@
   <ItemGroup>
     <Content Include="Public\js\app\collections\tasks.coffee">
       <LastGenOutput>tasks.js</LastGenOutput>
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
     </Content>
-    <Content Include="Public\js\app\main.coffee" />
-    <Content Include="Public\js\app\models\task.coffee" />
+    <Content Include="Public\js\app\main.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Public\js\app\models\task.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Public\js\app\views\appView.coffee" />
-    <Content Include="Public\js\app\views\newTaskView.coffee" />
-    <Content Include="Public\js\app\views\tasksView.coffee" />
-    <Content Include="Public\js\app\views\taskView.coffee" />
+    <Content Include="Public\js\app\views\appView.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Public\js\app\views\newTaskView.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Public\js\app\views\tasksView.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Public\js\app\views\taskView.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
