@@ -25,7 +25,7 @@ namespace Ogum.UI.Controllers
     [NeedsPersistence]
     public ActionResult Index(int year, int month, int day)
     {
-        var date = new DateTime(year, month, day);
+        var date = new DateTime(year, month + 1, day);
 
         var tasks = _session
             .Query<Task>()

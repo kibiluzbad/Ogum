@@ -15,10 +15,12 @@ jQuery ->
       @delegateEvents()
       @
     goToPreviousDate: (event) ->
-      @collection.goToPreviousDate()
+      date = @collection.getToPreviousDate()
+      Backbone.history.navigate "tasks/#{date.getFullYear()}/#{date.getMonth()}/#{date.getDate()}", true
     goToToday: (event) ->
       date = new Date
       @collection.setDate date
     goToNextDate: (event) ->
-      @collection.goToNextDate()
+      date = @collection.getToNextDate()
+      Backbone.history.navigate "tasks/#{date.getFullYear()}/#{date.getMonth()}/#{date.getDate()}", true
   @app.MenuView = MenuView

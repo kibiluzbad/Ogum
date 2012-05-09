@@ -156,7 +156,13 @@
     <Compile Include="Infra\Automapper\Profiles\NewTaskViewModelToTaskProfile.cs" />
     <Compile Include="Infra\Automapper\Profiles\TaskToTaskViewModelProfile.cs" />
     <Compile Include="Infra\Automapper\Profiles\TaskViewModelToTaskProfile.cs" />
+    <Content Include="Public\js\app\collections\tasks.js">
+      <DependentUpon>tasks.coffee</DependentUpon>
+    </Content>
     <Content Include="Public\js\app\routers\ogumRouter.coffee" />
+    <Content Include="Public\js\app\routers\ogumRouter.js">
+      <DependentUpon>ogumRouter.coffee</DependentUpon>
+    </Content>
     <Content Include="Public\js\app\views\completedTaskView.coffee" />
     <Content Include="Public\js\app\views\dateTitleView.coffee" />
     <Content Include="Public\js\app\views\menuView.coffee" />
@@ -177,6 +183,7 @@
     <Content Include="Public\js\lib\bundle.txt" />
     <Content Include="Public\js\lib\underscore.js" />
     <Content Include="Public\js\lib\modernizr-2.0.6-development-only.js" />
+    <Content Include="Public\js\lib\xdate.js" />
     <Content Include="Public\templates\completedTaskViewTemplate.html" />
     <Content Include="Public\templates\dateTitleTemplate.html" />
     <Content Include="Public\templates\menuTemplate.html" />

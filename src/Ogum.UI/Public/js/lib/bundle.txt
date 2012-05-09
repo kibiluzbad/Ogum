@@ -1,5 +1,6 @@
-﻿jquery-1.7.1.js
+﻿modernizr-2.0.6-development-only.js
+jquery-1.7.1.js
 underscore.js
 jQuery.tmpl.js
 backbone.js
-modernizr-2.0.6-development-only.js
+xdate.js

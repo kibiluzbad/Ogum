@@ -1,4 +1,5 @@
-﻿# @reference ../models/task.coffee
+﻿# @reference ../../lib/xdate.js
+# @reference ../models/task.coffee
 
 class Tasks extends Backbone.Collection
   model: app.Task
@@ -29,25 +30,23 @@ class Tasks extends Backbone.Collection
     @fetch()
     @trigger 'change:date'
   currentDate: ->
-    new Date(@year, @month-1, @day)
+    new XDate(@year, @month, @day)
   completedTasks: ->
     @filter (task) ->
       task.isCompleted()  
   incompleteTasks: ->
     @reject (task) ->
       task.isCompleted()
-  goToPreviousDate: ->
-    date = new Date()
-    date.setDate(@currentDate().getDate() - 1)
-    @setDate date
-  goToNextDate: ->
-    date = new Date()
-    date.setDate(@currentDate().getDate() + 1)
-    @setDate date
+  getToPreviousDate: ->
+    date = @currentDate().addDays(-1);
+    date
+  getToNextDate: ->
+    date = @currentDate().addDays(1);
+    date
   isToday: ->
     #Returns true if today is the date being tracked by this Collection.
     date = @currentDate()
-    today = new Date()
+    today = XDate.today().toDate()
     date.getFullYear() == today.getFullYear() and
       date.getMonth() == today.getMonth() and
       date.getDate() == today.getDate()
