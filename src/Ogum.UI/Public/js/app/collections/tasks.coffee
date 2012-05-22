@@ -28,7 +28,7 @@ class Tasks extends Backbone.Collection
     
     @url = "/api/tasks/#{year}/#{month}/#{day}"
     
-    Backbone.history.navigate @url, false
+    Backbone.history.navigate @url.replace("/api",""), false
     
     @resetUndo()
     @fetch()
