@@ -5,6 +5,7 @@
 # @reference views/newTaskView.coffee
 # @reference views/completedTaskView.coffee
 # @reference views/taskView.coffee
+# @reference views/editTaskView.coffee
 # @reference views/tasksView.coffee
 # @reference views/dateTitleView.coffee
 # @reference views/menuView.coffee

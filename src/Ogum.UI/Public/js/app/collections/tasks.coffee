@@ -6,6 +6,7 @@ class Tasks extends Backbone.Collection
   url: '/api/tasks'
   initialize: (options) ->
     @bind 'destroy', @willDestroyTask, @
+    @bind 'edit-mode', @enterEditMode, @    
   willDestroyTask: (task) ->
     @registerUndo task.toJSON()
   registerUndo: (attributes) ->
@@ -54,5 +55,7 @@ class Tasks extends Backbone.Collection
     date.getFullYear() == today.getFullYear() and
       date.getMonth() == today.getMonth() and
       date.getDate() == today.getDate()
+  enterEditMode: ->
+    @trigger 'change'
 @app = window.app ? {}
 @app.Tasks = new Tasks

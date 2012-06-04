@@ -8,6 +8,7 @@
     events:
       "click .destroy":"removeTask"
       "click .is-done":"markAsCompleted"
+      "click .edit":"enterEditMode"
     initialize: (options) ->    
       
     render: ->
@@ -22,4 +23,6 @@
       else
         @model.incomplete()
       @model.save()
+    enterEditMode: ->
+      @model.trigger "edit-mode"
   @app.TaskView = TaskView

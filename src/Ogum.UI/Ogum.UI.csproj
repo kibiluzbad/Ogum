@@ -205,6 +205,7 @@
     <Content Include="Public\js\lib\xdate.js" />
     <Content Include="Public\templates\completedTaskViewTemplate.html" />
     <Content Include="Public\templates\dateTitleTemplate.html" />
+    <Content Include="Public\templates\editTaskViewTemplate.html" />
     <Content Include="Public\templates\menuTemplate.html" />
     <Content Include="Public\templates\newTaskViewTemplate.html" />
     <Content Include="Public\templates\tasksViewTemplate.html" />
@@ -275,6 +276,14 @@
       <Bare>False</Bare>
       <Iced>False</Iced>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Public\js\app\views\editTaskView.coffee">
+      <Compile>False</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

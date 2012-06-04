@@ -8,7 +8,7 @@
     initialize: (options) ->
       @collection.bind 'add', @render, @
       @collection.bind 'change', @render, @
-      @collection.bind 'destroy', @render, @
+      @collection.bind 'destroy', @render, @      
     render: ->
       ($ @el).empty()
       
@@ -19,7 +19,10 @@
 
       #Incomplete tasks
       for task in @collection.incompleteTasks()
-        taskView = new app.TaskView model: task, collection: @collection
+        if task.editMode
+            taskView = new app.EditTaskView model: task, collection: @collection  
+        else
+            taskView = new app.TaskView model: task, collection: @collection
         ($ @el).append taskView.render().el
       
       #Undo item
