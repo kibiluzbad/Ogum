@@ -278,12 +278,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Public\js\app\views\editTaskView.coffee">
+    <Content Include="Public\js\app\views\editTaskView.coffee">
       <Compile>False</Compile>
       <Minify>True</Minify>
       <Bare>False</Bare>
       <Iced>False</Iced>
-    </None>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
