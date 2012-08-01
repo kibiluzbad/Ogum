@@ -5,6 +5,6 @@ end
 
 desc 'Start web server'
 task 'start-server' do
-	puts File.dirname(__FILE__)
-	exec %{.\\tools\\IISExpress\\iisexpress.exe /path:D:\\Users\\Leonardo\\Work\\ogum\\src\\Ogum.UI /port:3000}
+	cmd = ".\\tools\\IISExpress\\iisexpress.exe /path:#{File.dirname(__FILE__).gsub("/","\\")}\\src\\Ogum.UI /port:3000"
+	exec cmd
 end
