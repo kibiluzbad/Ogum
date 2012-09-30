@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ogum.UI", "Ogum.UI\Ogum.UI.csproj", "{A9F6AE1F-A4D3-4395-BCC9-A749141D3B12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ogum.Tests", "Ogum.Tests\Ogum.Tests.csproj", "{678DE151-5ADE-4F3A-B9EA-5AA8B02768D2}"
